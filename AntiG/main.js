@@ -1,0 +1,62 @@
+// Main JS - handling basic interactions
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Login button interaction
+    const loginBtns = document.querySelectorAll('.cta-btn, .btn-text');
+
+    loginBtns.forEach(btn => {
+        // Skip buttons that are inside a form to allow normal submission flow
+        if (btn.closest('form')) return;
+
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('Login clicked');
+            // Effect: simple pulse or alert simulation
+            btn.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                btn.style.transform = '';
+            }, 100);
+        });
+    });
+
+    // Card hover effects (additional JS based tilt could be added here, 
+    // but CSS hover is currently handling the scale)
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.borderColor = 'var(--primary-red)';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.borderColor = 'transparent';
+        });
+    });
+
+    // Registration Form Logic
+    const registerForm = document.getElementById('registerForm');
+    if (registerForm) {
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Simple validation/simulation
+            if (username && email && password) {
+                // "Database" simulation using localStorage
+                const user = {
+                    username: username,
+                    email: email,
+                    password: password // In a real app, never store plain text passwords!
+                };
+
+                localStorage.setItem('user', JSON.stringify(user));
+
+                alert('¡Registro exitoso! Ahora puedes iniciar sesión.');
+                window.location.href = 'login.html';
+            } else {
+                alert('Por favor, completa todos los campos.');
+            }
+        });
+    }
+});
