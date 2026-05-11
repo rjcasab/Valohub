@@ -1,0 +1,728 @@
+<?php
+session_start();
+?>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VALOHUB - Armas</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .weapons-container {
+            padding: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: calc(100vh - 60px - 150px);
+        }
+
+        .weapons-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-top: 20px;
+        }
+
+        .weapons-header h1 {
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            color: var(--primary-red);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .weapons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px 0;
+        }
+
+        .weapon-card {
+            background-color: var(--darker-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid #222;
+            transition: transform 0.3s, border-color 0.3s;
+            cursor: pointer;
+        }
+
+        .weapon-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-red);
+        }
+
+        .weapon-image-container {
+            height: 200px;
+            background: linear-gradient(180deg, #1f2326, #0f1923);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .weapon-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .weapon-info {
+            padding: 20px;
+            background-color: #0f1923;
+            border-top: 1px solid #222;
+        }
+
+        .weapon-category {
+            color: var(--text-gray);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .weapon-name {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .weapon-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-label {
+            color: var(--text-gray);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+        }
+
+        .stat-value {
+            color: var(--primary-red);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="logo-container" style="cursor: pointer;" onclick="window.location.href='index.php'">
+            <span class="riot-logo" role="img" aria-label="Riot Games Logo">👊</span>
+            <div class="divider"></div>
+            <span class="game-logo" role="img" aria-label="Valorant Logo">V</span>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><button class="nav-btn" onclick="window.location.href='champions.php'">Campeones <span
+                            class="arrow">▼</span></button></li>
+                <li><button class="nav-btn" onclick="window.location.href='weapons.php'">Armas <span
+                            class="arrow">▼</span></button></li>
+                <li><button class="nav-btn" onclick="window.location.href='maps.php'">Mapas <span
+                            class="arrow">▼</span></button></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a href="login.html" class="btn-text">Iniciar sesión</a>
+            <a href="register.html" class="btn-text">Registrarse</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="weapons-container">
+            <div class="weapons-header">
+                <h1>Arsenal</h1>
+                <p style="color: var(--text-gray); font-size: 1.2rem; margin-top: 10px;">Encuentra el arma perfecta para
+                    tu estilo de juego.</p>
+            </div>
+
+            <div class="weapons-grid">
+                <!-- Vandal -->
+                <article class="weapon-card">
+                    <div class="weapon-image-container">
+                        <img src="armas/vandal.png" alt="VANDAL">
+                    </div>
+                    <div class="weapon-info">
+                        <div class="weapon-category">Fusil de asalto</div>
+                        <h2 class="weapon-name">VANDAL</h2>
+                        <div class="weapon-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Daño cabeza</span>
+                                <span class="stat-value">160</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cargador</span>
+                                <span class="stat-value">25</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cadencia</span>
+                                <span class="stat-value">9.75 b/s</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Precio</span>
+                                <span class="stat-value">2,900¤</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Phantom -->
+                <article class="weapon-card">
+                    <div class="weapon-image-container">
+                        <img src="armas/phantom.png" alt="PHANTOM">
+                    </div>
+                    <div class="weapon-info">
+                        <div class="weapon-category">Fusil de asalto</div>
+                        <h2 class="weapon-name">PHANTOM</h2>
+                        <div class="weapon-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Daño cabeza</span>
+                                <span class="stat-value">156 - 140</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cargador</span>
+                                <span class="stat-value">30</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cadencia</span>
+                                <span class="stat-value">11 b/s</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Precio</span>
+                                <span class="stat-value">2,900¤</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Operator -->
+                <article class="weapon-card">
+                    <div class="weapon-image-container">
+                        <img src="armas/operator.png" alt="OPERATOR">
+                    </div>
+                    <div class="weapon-info">
+                        <div class="weapon-category">Francotirador</div>
+                        <h2 class="weapon-name">OPERATOR</h2>
+                        <div class="weapon-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Daño cuerpo</span>
+                                <span class="stat-value">150</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cargador</span>
+                                <span class="stat-value">5</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cadencia</span>
+                                <span class="stat-value">0.6 b/s</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Precio</span>
+                                <span class="stat-value">4,700¤</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Sheriff -->
+                <article class="weapon-card">
+                    <div class="weapon-image-container">
+                        <img src="armas/sheriff.png" alt="SHERIFF">
+                    </div>
+                    <div class="weapon-info">
+                        <div class="weapon-category">Arma secundaria</div>
+                        <h2 class="weapon-name">SHERIFF</h2>
+                        <div class="weapon-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Daño cabeza</span>
+                                <span class="stat-value">159 - 145</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cargador</span>
+                                <span class="stat-value">6</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cadencia</span>
+                                <span class="stat-value">4 b/s</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Precio</span>
+                                <span class="stat-value">800¤</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Spectre -->
+                <article class="weapon-card">
+                    <div class="weapon-image-container">
+                        <img src="armas/spectre.png" alt="SPECTRE">
+                    </div>
+                    <div class="weapon-info">
+                        <div class="weapon-category">Subfusil</div>
+                        <h2 class="weapon-name">SPECTRE</h2>
+                        <div class="weapon-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Daño cuerpo</span>
+                                <span class="stat-value">26 - 22</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cargador</span>
+                                <span class="stat-value">30</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cadencia</span>
+                                <span class="stat-value">13.33 b/s</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Precio</span>
+                                <span class="stat-value">1,600¤</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Odin -->
+                <article class="weapon-card">
+                    <div class="weapon-image-container">
+                        <img src="armas/Odin.png" alt="ODIN">
+                    </div>
+                    <div class="weapon-info">
+                        <div class="weapon-category">Ametralladora</div>
+                        <h2 class="weapon-name">ODIN</h2>
+                        <div class="weapon-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Daño cuerpo</span>
+                                <span class="stat-value">38 - 31</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cargador</span>
+                                <span class="stat-value">100</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cadencia</span>
+                                <span class="stat-value">12 - 15.6 b/s</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Precio</span>
+                                <span class="stat-value">3,200¤</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Ares -->
+                <article class="weapon-card">
+                    <div class="weapon-image-container">
+                        <img src="armas/Ares.png" alt="ARES">
+                    </div>
+                    <div class="weapon-info">
+                        <div class="weapon-category">Ametralladora ligera</div>
+                        <h2 class="weapon-name">ARES</h2>
+                        <div class="weapon-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Daño cuerpo</span>
+                                <span class="stat-value">30 - 25</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cargador</span>
+                                <span class="stat-value">50</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cadencia</span>
+                                <span class="stat-value">13 - 10 b/s</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Precio</span>
+                                <span class="stat-value">1,600¤</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Bandit -->
+                <article class="weapon-card">
+                    <div class="weapon-image-container">
+                        <img src="armas/Bandit.png" alt="BANDIT">
+                    </div>
+                    <div class="weapon-info">
+                        <div class="weapon-category">Escopeta</div>
+                        <h2 class="weapon-name">BANDIT</h2>
+                        <div class="weapon-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Daño cercano</span>
+                                <span class="stat-value">75 - 34</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cargador</span>
+                                <span class="stat-value">15</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cadencia</span>
+                                <span class="stat-value">6.25 b/s</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Precio</span>
+                                <span class="stat-value">950¤</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Bucky -->
+                <article class="weapon-card">
+                    <div class="weapon-image-container">
+                        <img src="armas/bucky.png" alt="BUCKY">
+                    </div>
+                    <div class="weapon-info">
+                        <div class="weapon-category">Escopeta</div>
+                        <h2 class="weapon-name">BUCKY</h2>
+                        <div class="weapon-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Daño cercano</span>
+                                <span class="stat-value">40 - 18</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cargador</span>
+                                <span class="stat-value">8</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cadencia</span>
+                                <span class="stat-value">1.1 b/s</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Precio</span>
+                                <span class="stat-value">850¤</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Bulldog -->
+                <article class="weapon-card">
+                    <div class="weapon-image-container">
+                        <img src="armas/bulldog.png" alt="BULLDOG">
+                    </div>
+                    <div class="weapon-info">
+                        <div class="weapon-category">Rifle de asalto</div>
+                        <h2 class="weapon-name">BULLDOG</h2>
+                        <div class="weapon-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Daño cabeza</span>
+                                <span class="stat-value">116 - 35</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cargador</span>
+                                <span class="stat-value">24</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cadencia</span>
+                                <span class="stat-value">9.15 b/s</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Precio</span>
+                                <span class="stat-value">2,050¤</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Classic -->
+                <article class="weapon-card">
+                    <div class="weapon-image-container">
+                        <img src="armas/clasicc.png" alt="CLASSIC">
+                    </div>
+                    <div class="weapon-info">
+                        <div class="weapon-category">Pistola</div>
+                        <h2 class="weapon-name">CLASSIC</h2>
+                        <div class="weapon-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Daño cabeza</span>
+                                <span class="stat-value">78 - 26</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cargador</span>
+                                <span class="stat-value">12</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cadencia</span>
+                                <span class="stat-value">6.75 b/s</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Precio</span>
+                                <span class="stat-value">0¤</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Frenzy -->
+                <article class="weapon-card">
+                    <div class="weapon-image-container">
+                        <img src="armas/Frenzy.png" alt="FRENZY">
+                    </div>
+                    <div class="weapon-info">
+                        <div class="weapon-category">Subfusil</div>
+                        <h2 class="weapon-name">FRENZY</h2>
+                        <div class="weapon-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Daño cuerpo</span>
+                                <span class="stat-value">26 - 21</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cargador</span>
+                                <span class="stat-value">13</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cadencia</span>
+                                <span class="stat-value">10 b/s</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Precio</span>
+                                <span class="stat-value">450¤</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Ghost -->
+                <article class="weapon-card">
+                    <div class="weapon-image-container">
+                        <img src="armas/ghost.png" alt="GHOST">
+                    </div>
+                    <div class="weapon-info">
+                        <div class="weapon-category">Pistola</div>
+                        <h2 class="weapon-name">GHOST</h2>
+                        <div class="weapon-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Daño cabeza</span>
+                                <span class="stat-value">105 - 30</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cargador</span>
+                                <span class="stat-value">15</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cadencia</span>
+                                <span class="stat-value">6.75 b/s</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Precio</span>
+                                <span class="stat-value">500¤</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Guardian -->
+                <article class="weapon-card">
+                    <div class="weapon-image-container">
+                        <img src="armas/guardian.png" alt="GUARDIAN">
+                    </div>
+                    <div class="weapon-info">
+                        <div class="weapon-category">Rifle de francotirador</div>
+                        <h2 class="weapon-name">GUARDIAN</h2>
+                        <div class="weapon-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Daño cabeza</span>
+                                <span class="stat-value">195 - 65</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cargador</span>
+                                <span class="stat-value">12</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cadencia</span>
+                                <span class="stat-value">4.5 b/s</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Precio</span>
+                                <span class="stat-value">2,250¤</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Judge -->
+                <article class="weapon-card">
+                    <div class="weapon-image-container">
+                        <img src="armas/judge.png" alt="JUDGE">
+                    </div>
+                    <div class="weapon-info">
+                        <div class="weapon-category">Escopeta</div>
+                        <h2 class="weapon-name">JUDGE</h2>
+                        <div class="weapon-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Daño cercano</span>
+                                <span class="stat-value">34 - 17</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cargador</span>
+                                <span class="stat-value">7</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cadencia</span>
+                                <span class="stat-value">3.5 b/s</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Precio</span>
+                                <span class="stat-value">1,850¤</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Marshal -->
+                <article class="weapon-card">
+                    <div class="weapon-image-container">
+                        <img src="armas/marshal.png" alt="MARSHAL">
+                    </div>
+                    <div class="weapon-info">
+                        <div class="weapon-category">Francotirador</div>
+                        <h2 class="weapon-name">MARSHAL</h2>
+                        <div class="weapon-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Daño cabeza</span>
+                                <span class="stat-value">202 - 101</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cargador</span>
+                                <span class="stat-value">5</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cadencia</span>
+                                <span class="stat-value">1.5 b/s</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Precio</span>
+                                <span class="stat-value">950¤</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Outlaw -->
+                <article class="weapon-card">
+                    <div class="weapon-image-container">
+                        <img src="armas/outlaw.png" alt="OUTLAW">
+                    </div>
+                    <div class="weapon-info">
+                        <div class="weapon-category">Pistola</div>
+                        <h2 class="weapon-name">OUTLAW</h2>
+                        <div class="weapon-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Daño cabeza</span>
+                                <span class="stat-value">141 - 41</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cargador</span>
+                                <span class="stat-value">6</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cadencia</span>
+                                <span class="stat-value">2.75 b/s</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Precio</span>
+                                <span class="stat-value">800¤</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Shorty -->
+                <article class="weapon-card">
+                    <div class="weapon-image-container">
+                        <img src="armas/shorty.png" alt="SHORTY">
+                    </div>
+                    <div class="weapon-info">
+                        <div class="weapon-category">Escopeta</div>
+                        <h2 class="weapon-name">SHORTY</h2>
+                        <div class="weapon-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Daño cercano</span>
+                                <span class="stat-value">36 - 12</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cargador</span>
+                                <span class="stat-value">2</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cadencia</span>
+                                <span class="stat-value">3.3 b/s</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Precio</span>
+                                <span class="stat-value">300¤</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Stinger -->
+                <article class="weapon-card">
+                    <div class="weapon-image-container">
+                        <img src="armas/stinger.png" alt="STINGER">
+                    </div>
+                    <div class="weapon-info">
+                        <div class="weapon-category">Subfusil</div>
+                        <h2 class="weapon-name">STINGER</h2>
+                        <div class="weapon-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Daño cuerpo</span>
+                                <span class="stat-value">27 - 22</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cargador</span>
+                                <span class="stat-value">20</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Cadencia</span>
+                                <span class="stat-value">18 b/s</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Precio</span>
+                                <span class="stat-value">950¤</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-cta">
+            <h4>¿Necesitáis mas ayuda?<br>Ponte en contacto con nosotros.</h4>
+            <div class="contact-info">
+                <span>Valohub@gmail.com</span>
+                <span>644160538</span>
+            </div>
+        </div>
+        <div class="footer-social">
+            <h4>Redes sociales</h4>
+            <ul>
+                <li><span class="social-icon">🎵</span> valoranthub</li>
+                <li><span class="social-icon">📷</span> valohub</li>
+                <li><span class="social-icon">✖️</span> valoxhub</li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
